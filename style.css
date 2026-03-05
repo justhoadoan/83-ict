@@ -1,0 +1,786 @@
+/* ============================================
+   WOMEN'S DAY CELEBRATION - STYLE SHEET
+   ============================================ */
+
+/* CSS Variables */
+:root {
+    --pink-light: #fce4ec;
+    --pink: #f48fb1;
+    --pink-deep: #e91e63;
+    --pink-dark: #c2185b;
+    --purple-light: #e1bee7;
+    --purple: #ab47bc;
+    --purple-deep: #7b1fa2;
+    --gold: #ffd54f;
+    --gold-dark: #f9a825;
+    --rose: #ff6f91;
+    --coral: #ff9671;
+    --white: #ffffff;
+    --text-dark: #2d1b3d;
+    --text-light: #f8f0fc;
+    --glass-bg: rgba(255, 255, 255, 0.12);
+    --glass-border: rgba(255, 255, 255, 0.25);
+    --shadow: 0 8px 32px rgba(31, 38, 135, 0.15);
+    --font-display: 'Playfair Display', serif;
+    --font-elegant: 'Great Vibes', cursive;
+    --font-body: 'Inter', sans-serif;
+}
+
+/* Reset */
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    overflow: hidden;
+    height: 100%;
+}
+
+body {
+    font-family: var(--font-body);
+    background: linear-gradient(135deg, #1a0a2e 0%, #2d1250 25%, #4a1942 50%, #6b2357 75%, #8b3a62 100%);
+    color: var(--text-light);
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+.fullpage-container {
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+}
+
+.fullpage-container>header,
+.fullpage-container>section,
+.fullpage-container>footer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    overflow-y: auto;
+    transition: transform 0.8s cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+
+/* ============================================
+   SCROLL REVEAL ANIMATIONS
+   ============================================ */
+.reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+        transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Staggered reveal for section children */
+.reveal .section-header {
+    opacity: 0;
+    transform: translateY(25px);
+    transition: opacity 0.6s ease 0.1s, transform 0.6s ease 0.1s;
+}
+
+.reveal.visible .section-header {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.reveal .video-wrapper,
+.reveal .wish-card {
+    opacity: 0;
+    transform: translateY(30px) scale(0.97);
+    transition: opacity 0.7s ease 0.25s, transform 0.7s ease 0.25s;
+}
+
+.reveal.visible .video-wrapper,
+.reveal.visible .wish-card {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+.reveal .wish-controls {
+    opacity: 0;
+    transition: opacity 0.5s ease 0.5s;
+}
+
+.reveal.visible .wish-controls {
+    opacity: 1;
+}
+
+/* Grid cards stagger */
+.grid-wish-card {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.5s ease, transform 0.5s ease, background 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.grid-wish-card.card-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ============================================
+   HERO SECTION
+   ============================================ */
+.hero {
+    min-height: 100vh;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    text-align: center;
+    padding: 2rem;
+    background:
+        radial-gradient(ellipse at 20% 50%, rgba(233, 30, 99, 0.15) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 20%, rgba(171, 71, 188, 0.2) 0%, transparent 50%),
+        radial-gradient(ellipse at 50% 80%, rgba(255, 213, 79, 0.1) 0%, transparent 50%);
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23f48fb1' fill-opacity='0.05'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    animation: heroFadeIn 1.5s ease-out;
+}
+
+@keyframes heroFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.hero-date {
+    font-family: var(--font-body);
+    font-weight: 300;
+    font-size: 1.2rem;
+    letter-spacing: 8px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.5rem;
+    animation: shimmer 3s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+
+    0%,
+    100% {
+        opacity: 0.7;
+    }
+
+    50% {
+        opacity: 1;
+        text-shadow: 0 0 20px rgba(255, 213, 79, 0.5);
+    }
+}
+
+.hero-title {
+    font-family: var(--font-display);
+    font-size: clamp(2.5rem, 7vw, 5.5rem);
+    font-weight: 700;
+    line-height: 1.2;
+    background: linear-gradient(135deg, var(--pink) 0%, var(--rose) 25%, var(--gold) 50%, var(--pink) 75%, var(--coral) 100%);
+    background-size: 300% 300%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: gradientShift 5s ease infinite;
+    margin-bottom: 1.5rem;
+    text-shadow: none;
+}
+
+@keyframes gradientShift {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.hero-subtitle {
+    font-size: clamp(1rem, 2.5vw, 1.4rem);
+    font-weight: 300;
+    color: rgba(248, 240, 252, 0.85);
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+.hero-divider {
+    margin-top: 2.5rem;
+    font-size: 2rem;
+    animation: pulse 2s ease-in-out infinite;
+    color: var(--pink);
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+        opacity: 0.7;
+    }
+
+    50% {
+        transform: scale(1.3);
+        opacity: 1;
+    }
+}
+
+.scroll-indicator {
+    position: absolute;
+    bottom: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    z-index: 2;
+    animation: bounce 2s ease-in-out infinite;
+}
+
+.scroll-indicator span {
+    font-size: 0.8rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: rgba(248, 240, 252, 0.5);
+}
+
+.scroll-arrow {
+    font-size: 1.2rem;
+    color: var(--pink);
+}
+
+@keyframes bounce {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(10px);
+    }
+}
+
+/* ============================================
+   SECTION COMMON STYLES
+   ============================================ */
+.section-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.section-title {
+    font-family: 'Outfit', sans-serif;
+    font-size: clamp(1.8rem, 4vw, 3rem);
+    font-weight: 600;
+    color: var(--white);
+    margin-bottom: 0.8rem;
+}
+
+.section-desc {
+    font-size: 1.05rem;
+    font-weight: 300;
+    color: rgba(248, 240, 252, 0.6);
+}
+
+/* ============================================
+   VIDEO SECTION
+   ============================================ */
+.video-section {
+    padding: 5rem 2rem;
+    position: relative;
+    min-height: 100vh;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.video-wrapper {
+    max-width: 900px;
+    margin: 0 auto;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow:
+        0 20px 60px rgba(0, 0, 0, 0.4),
+        0 0 100px rgba(233, 30, 99, 0.1),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+    position: relative;
+    background: #000;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.video-wrapper:hover {
+    transform: translateY(-5px);
+    box-shadow:
+        0 30px 80px rgba(0, 0, 0, 0.5),
+        0 0 120px rgba(233, 30, 99, 0.15),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.15);
+}
+
+.video-wrapper iframe {
+    width: 100%;
+    display: block;
+    aspect-ratio: 16 / 9;
+    border: none;
+    background: #000;
+}
+
+/* ============================================
+   WISHES SECTION
+   ============================================ */
+.wishes-section {
+    padding: 5rem 2rem;
+    min-height: 100vh;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.wishes-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--pink), transparent);
+}
+
+.wish-card {
+    max-width: 650px;
+    width: 100%;
+    padding: 3rem 2.5rem;
+    background: rgba(255, 255, 255, 0.07);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    box-shadow:
+        0 20px 60px rgba(0, 0, 0, 0.2),
+        0 0 80px rgba(233, 30, 99, 0.08);
+    text-align: center;
+    position: relative;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    min-height: 250px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.wish-card.fade-out {
+    opacity: 0;
+    transform: scale(0.95) translateY(10px);
+}
+
+.wish-card.fade-in {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+}
+
+.wish-quote {
+    font-family: var(--font-elegant);
+    font-size: 5rem;
+    color: var(--pink);
+    opacity: 0.3;
+    position: absolute;
+    top: 10px;
+    left: 25px;
+    line-height: 1;
+}
+
+.wish-message {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    color: rgba(255, 255, 255, 0.9);
+    font-weight: 300;
+    font-style: italic;
+    margin-bottom: 2rem;
+    position: relative;
+    z-index: 1;
+}
+
+.wish-author {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    justify-content: center;
+}
+
+.wish-author-avatar {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--pink-deep), var(--purple));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    box-shadow: 0 4px 15px rgba(233, 30, 99, 0.3);
+}
+
+.wish-author-name {
+    font-family: var(--font-display);
+    font-size: 1.3rem;
+    color: var(--gold);
+    font-weight: 700;
+}
+
+/* Wish Controls */
+.wish-controls {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.wish-btn {
+    padding: 0.8rem 1.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50px;
+    background: rgba(255, 255, 255, 0.08);
+    color: var(--white);
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.wish-btn:hover {
+    background: rgba(233, 30, 99, 0.3);
+    border-color: var(--pink);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(233, 30, 99, 0.2);
+}
+
+.wish-btn-main {
+    background: linear-gradient(135deg, var(--pink-deep), var(--purple));
+    border-color: transparent;
+    font-weight: 500;
+    padding: 0.8rem 2rem;
+}
+
+.wish-btn-main:hover {
+    background: linear-gradient(135deg, var(--pink-dark), var(--purple-deep));
+    box-shadow: 0 8px 25px rgba(233, 30, 99, 0.4);
+}
+
+.wish-btn.active {
+    background: rgba(233, 30, 99, 0.4);
+    border-color: var(--pink);
+}
+
+.wish-counter {
+    margin-top: 1.2rem;
+    font-size: 0.85rem;
+    color: rgba(248, 240, 252, 0.4);
+    letter-spacing: 2px;
+}
+
+/* ============================================
+   ALL WISHES GRID
+   ============================================ */
+.all-wishes-section {
+    padding: 5rem 2rem 2rem 2rem;
+    position: relative;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    overflow-y: auto;
+}
+
+.all-wishes-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--purple), transparent);
+}
+
+.wishes-grid {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+.grid-wish-card {
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.grid-wish-card:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-4px);
+    border-color: rgba(244, 143, 177, 0.3);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+}
+
+
+
+.grid-wish-message {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.8);
+    font-style: italic;
+    margin-bottom: 1.2rem;
+}
+
+.grid-wish-author {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.grid-wish-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--pink-deep), var(--purple));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9rem;
+}
+
+.grid-wish-name {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    color: var(--gold);
+}
+
+/* ============================================
+   FOOTER
+   ============================================ */
+.footer {
+    padding: 4rem 2rem;
+    text-align: center;
+    position: relative;
+    min-height: 40vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+
+.footer-content {
+    margin-top: 3rem;
+    padding: 3rem 2rem;
+    text-align: center;
+    width: 100%;
+}
+
+.footer-content .footer-emoji {
+    font-size: 2rem;
+    letter-spacing: 10px;
+    margin-bottom: 1rem;
+    animation: sparkle 2s ease-in-out infinite;
+}
+
+.footer-content .footer-text {
+    animation: sparkle 2s ease-in-out infinite;
+}
+
+.footer-content .footer-sub {
+    animation: sparkle 2s ease-in-out infinite;
+}
+
+@keyframes sparkle {
+
+    0%,
+    100% {
+        opacity: 0.4;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.05);
+        text-shadow: 0 0 15px rgba(244, 143, 177, 0.5);
+    }
+}
+
+.footer-text {
+    font-family: var(--font-display);
+    font-size: 2rem;
+    color: var(--pink);
+    margin-bottom: 0.5rem;
+}
+
+.footer-sub {
+    font-size: 0.9rem;
+    color: rgba(248, 240, 252, 0.4);
+    font-weight: 300;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 768px) {
+    .hero {
+        padding: 1.5rem;
+    }
+
+    .hero-date {
+        font-size: 1rem;
+        letter-spacing: 5px;
+    }
+
+    .wish-card {
+        padding: 2rem 1.5rem;
+        min-height: 200px;
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+    }
+
+    .wish-quote {
+        font-size: 3.5rem;
+        top: 5px;
+        left: 15px;
+    }
+
+    .wish-message {
+        font-size: 1.05rem;
+    }
+
+    .wish-controls {
+        flex-wrap: nowrap;
+        justify-content: center;
+        width: 100%;
+        gap: 0.5rem;
+    }
+
+    .wish-btn {
+        padding: 0.7rem 1rem;
+    }
+
+    .wishes-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .video-wrapper {
+        border-radius: 12px;
+    }
+
+    .section-title {
+        font-size: 1.6rem;
+    }
+
+    /* Disable heavy effects on mobile */
+    .grid-wish-card {
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+        background: rgba(255, 255, 255, 0.1);
+    }
+
+    .video-wrapper {
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    }
+
+    .video-wrapper:hover {
+        transform: none;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-subtitle {
+        font-size: 0.95rem;
+    }
+
+    .wish-card {
+        padding: 1.8rem 1.2rem;
+    }
+
+    .wish-btn-main {
+        padding: 0.7rem 1.5rem;
+        font-size: 0.85rem;
+    }
+}
+
+/* ============================================
+   SCROLLBAR
+   ============================================ */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #1a0a2e;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(var(--pink-deep), var(--purple));
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(var(--pink), var(--purple));
+}
+
+/* ============================================
+   SELECTION
+   ============================================ */
+::selection {
+    background: rgba(233, 30, 99, 0.3);
+    color: var(--white);
+}

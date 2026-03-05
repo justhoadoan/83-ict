@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Chúc mừng ngày Quốc tế Phụ nữ 8/3 - Gửi những lời chúc tốt đẹp nhất đến các bạn nữ lớp mình!">
+    <title>🌸 Chúc Mừng Ngày 8/3 🌸</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600&family=Great+Vibes&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="fullpage-container" id="fullpageContainer">
+
+        <!-- Hero Section -->
+        <header class="hero">
+            <div class="hero-overlay"></div>
+            <div class="hero-content">
+                <p class="hero-date">Ngày 8 tháng 3</p>
+                <h1 class="hero-title">Chúc Mừng Ngày<br>Quốc Tế Phụ Nữ</h1>
+                <p class="hero-subtitle">Gửi đến các bạn nữ lớp ICT01 những lời chúc tốt đẹp nhất 💐</p>
+                <div class="hero-divider">
+                    <span>✿</span>
+                </div>
+            </div>
+            <div class="scroll-indicator">
+                <span>Cuộn xuống</span>
+                <div class="scroll-arrow">↓</div>
+            </div>
+        </header>
+
+        <!-- Video Section -->
+        <section class="video-section reveal" id="video">
+            <div class="section-header">
+                <h2 class="section-title">🎬 Video nhà làm bởi các bạn nam hẹ hẹ</h2>
+            </div>
+            <div class="video-wrapper">
+                <!-- HƯỚNG DẪN: Thay YOUR_FILE_ID bằng ID file Google Drive của bạn -->
+                <!-- Cách lấy ID: Mở file trên Drive → Share → Copy link → ID nằm giữa /d/ và /view -->
+                <!-- VD: https://drive.google.com/file/d/ABC123XYZ/view → ID là ABC123XYZ -->
+                <iframe id="mainVideo" src="https://drive.google.com/file/d/YOUR_FILE_ID/preview"
+                    allow="autoplay; encrypted-media" allowfullscreen frameborder="0">
+                </iframe>
+            </div>
+        </section>
+
+        <!-- Wishes Section -->
+        <section class="wishes-section reveal" id="wishes">
+            <div class="section-header">
+                <h2 class="section-title">💌 Lời Chúc Từ Các Bạn Nam</h2>
+                <p class="section-desc">Mỗi lời chúc là một tấm lòng chân thành</p>
+            </div>
+            <div class="wish-card" id="wishCard">
+                <div class="wish-quote">"</div>
+                <p class="wish-message" id="wishMessage">Đang tải lời chúc...</p>
+                <div class="wish-author">
+                    <div class="wish-author-avatar" id="wishAvatar">💐</div>
+                    <span class="wish-author-name" id="wishAuthor">...</span>
+                </div>
+            </div>
+            <div class="wish-controls">
+                <button class="wish-btn" id="prevWishBtn" title="Lời chúc trước">
+                    ←
+                </button>
+                <button class="wish-btn wish-btn-main" id="nextWishBtn">
+                    🌸 Xem lời chúc khác
+                </button>
+                <button class="wish-btn" id="autoPlayBtn" title="Tự động chuyển">
+                    ▶
+                </button>
+            </div>
+            <div class="wish-counter">
+                <span id="wishCounter">1</span> / <span id="wishTotal">0</span>
+            </div>
+        </section>
+
+        <!-- All Wishes Grid -->
+        <section class="all-wishes-section reveal" id="allWishes">
+            <div class="section-header">
+                <h2 class="section-title">📝 Tất Cả Lời Chúc</h2>
+                <p class="section-desc">Tổng hợp lời chúc từ cả lớp</p>
+            </div>
+            <div class="wishes-grid" id="wishesGrid"></div>
+            <div class="footer-content">
+                <p class="footer-emoji">🌸🌹🌷💐🌺</p>
+                <p class="footer-text">Happy Women's Day!</p>
+                <p class="footer-sub">Made with ❤️ bởi các bạn nam trong lớp</p>
+            </div>
+        </section>
+
+    </div> <!-- end fullpage-container -->
+    <script src="script.js"></script>
+</body>
+
+</html>
